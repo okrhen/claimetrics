@@ -3,46 +3,41 @@ import React from "react";
 import { Text, View, StyleSheet } from "react-native";
 import { List, ListItem, Left, Body, Right, Icon, Button } from "native-base";
 import { IHomeScreenProps } from "../../interfaces/screens/Home";
+import { colors } from "../../styles/theme";
 
-const Home = ({ navigation }: IHomeScreenProps) => {
-  const handlePressItem = (screen: string) => {
-    navigation.navigate(screen);
+const NewReport = ({ navigation }: IHomeScreenProps) => {
+  const handlePressItem = () => {
+    navigation.navigate("Profile");
   };
 
   return (
     <View style={styles.container}>
       <List>
-        <ListItem
-          style={styles.listItem}
-          onPress={() => handlePressItem("New Report")}
-        >
+        <ListItem style={styles.listItem}>
           <Left>
             <View style={styles.listItemContent}>
-              <Button style={styles.listItemBtn}>
+              <Button style={styles.listItemBtn} danger>
                 <Icon
-                  name="plus"
+                  name="user-tag"
                   type="FontAwesome5"
                   style={styles.listItemIcon}
                 />
               </Button>
-              <Text>New Report</Text>
+              <Text>My Property</Text>
             </View>
           </Left>
         </ListItem>
-        <ListItem
-          style={styles.listItem}
-          onPress={() => handlePressItem("Profile")}
-        >
+        <ListItem style={styles.listItem} onPress={handlePressItem}>
           <Left>
             <View style={styles.listItemContent}>
-              <Button light style={styles.listItemBtn}>
+              <Button light style={styles.listItemBtn} dark>
                 <Icon
-                  name="user"
+                  name="user-friends"
                   type="FontAwesome5"
-                  style={styles.listItemIcon}
+                  style={[styles.listItemIcon, styles.iconWhite]}
                 />
               </Button>
-              <Text>My Profile</Text>
+              <Text>Third Party</Text>
             </View>
           </Left>
         </ListItem>
@@ -63,7 +58,7 @@ const styles = StyleSheet.create({
     height: "100%",
     display: "flex",
     flexDirection: "row",
-    // justifyContent: 'center',
+    justifyContent: "center",
     alignItems: "center",
   },
   listItemBtn: {
@@ -76,8 +71,12 @@ const styles = StyleSheet.create({
     padding: 0,
   },
   listItemIcon: {
-    fontSize: 20,
+    fontSize: 16,
+    margin: 0,
+  },
+  iconWhite: {
+    color: colors.white,
   },
 });
 
-export default Home;
+export default NewReport;

@@ -1,27 +1,37 @@
-import React from "react";
-import { Text, View, StyleSheet, Image } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
+import React, { useEffect } from "react";
+import { View, StyleSheet, Image } from "react-native";
 import { Spinner } from "native-base";
+import SafeContainer from "../../components/SafeContainer/SafeContainer";
+import { ISplashScreenProps } from "../../interfaces/screens/SplashScreen";
 
-const SplashScreen = () => (
-  <SafeAreaView style={styles.safeContainer}>
-    <View style={styles.container}>
-      <Image
-        source={require("../../../assets/logo/aon-logo.png")}
-        resizeMode="contain"
-        style={styles.image}
-      />
-      <Spinner color="#fff" />
-    </View>
-  </SafeAreaView>
-);
+const SplashScreen = ({ navigation }: ISplashScreenProps) => {
+  useEffect(() => {
+    if (navigation) {
+      console.log(navigation);
+
+      setTimeout(() => {
+        return navigation.replace("Home");
+      }, 1000);
+
+      //   return clearTimeout(timeout);
+    }
+  }, []);
+
+  return (
+    <SafeContainer backgroundColor="red">
+      <View style={styles.container}>
+        <Image
+          source={require("../../../assets/logo/aon-logo.png")}
+          resizeMode="contain"
+          style={styles.image}
+        />
+        <Spinner color="#fff" />
+      </View>
+    </SafeContainer>
+  );
+};
 
 const styles = StyleSheet.create({
-  safeContainer: {
-    display: "flex",
-    flex: 1,
-    backgroundColor: "#e11c23",
-  },
   container: {
     display: "flex",
     flex: 1,
@@ -30,7 +40,6 @@ const styles = StyleSheet.create({
   },
   image: {
     width: "50%",
-    // height: 60,
   },
 });
 
