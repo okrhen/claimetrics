@@ -1,7 +1,7 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import * as React from "react";
-import { Home, SplashScreen, Profile, NewReport } from "../screens";
+import { Home, SplashScreen, Profile, NewReport, PolicyNumber } from "../screens";
 import {
   screenHeaderOptions,
   headerRightBtn,
@@ -40,6 +40,15 @@ function AppNavigation() {
             ...screenHeaderOptions,
             ...headerRightBtn({ iconName: "home", navigation }),
             ...headerBackTitle,
+          })}
+        />
+        <Stack.Screen
+          name="Policy Number"
+          component={PolicyNumber}
+          options={({ navigation }) => ({
+            ...screenHeaderOptions,
+            ...headerRightBtn({ iconName: "home", navigation }),
+            ...{ headerBackTitle: "Cancel", },
           })}
         />
         <Stack.Screen

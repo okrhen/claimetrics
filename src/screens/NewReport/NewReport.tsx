@@ -7,13 +7,15 @@ import { colors } from "../../styles/theme";
 
 const NewReport = ({ navigation }: IHomeScreenProps) => {
   const handlePressItem = () => {
-    navigation.navigate("Profile");
+    navigation.navigate("Policy Number");
   };
 
   return (
     <View style={styles.container}>
       <List>
-        <ListItem style={styles.listItem}>
+        <ListItem
+          style={styles.listItem}
+          onPress={() => handlePressItem()}>
           <Left>
             <View style={styles.listItemContent}>
               <Button style={styles.listItemBtn} danger>
@@ -27,7 +29,9 @@ const NewReport = ({ navigation }: IHomeScreenProps) => {
             </View>
           </Left>
         </ListItem>
-        <ListItem style={styles.listItem} onPress={handlePressItem}>
+        <ListItem
+          style={styles.listItem}
+          onPress={() => handlePressItem()}>
           <Left>
             <View style={styles.listItemContent}>
               <Button light style={styles.listItemBtn} dark>
